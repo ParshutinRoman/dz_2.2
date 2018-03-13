@@ -9,10 +9,8 @@ for file in files:
     with open(file, 'rb') as f:
         data = f.read()
         result = chardet.detect(data)
-
-    with open(file, 'r', encoding = result['encoding']) as f:
-        data = f.read()
-        words = data.split(' ')
+        text = data.decode(result['encoding'])
+        words = text.split(' ')
         words_short = []
         for word in words:
             if len(word) > 6:
